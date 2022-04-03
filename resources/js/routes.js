@@ -1,33 +1,35 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeComponent from "./components/HomeComponent.vue";
-import ExamComponent from "./components/ExamComponent.vue";
-import NotFoundComponent from "./components/NotFoundComponent.vue";
 import BookComponent from "./components/BookComponent.vue";
+import BookDetailComponent from "./components/BookDetailComponent.vue";
+import HomeComponent from "./components/HomeComponent.vue";
+import NotFoundComponent from "./components/NotFoundComponent.vue";
 
 const routes = [
     {
-        path: "/home",
+        path: "/",
         component: HomeComponent,
         name: "home",
-    },
-    {
-        path: "/exam",
-        component: ExamComponent,
-        name: "exam",
-    },
-    {
-        path: "/:pathMatch(.*)*",
-        component: NotFoundComponent,
-        name: "notFound",
     },
     {
         path: "/books",
         component: BookComponent,
         name: "books",
     },
+    {
+        path: "/book/:id",
+        component: BookDetailComponent,
+        name: "bookDetail",
+    },
+    {
+        path: "/:pathMatch(.*)*",
+        component: NotFoundComponent,
+        name: "notFound",
+    },
 ];
 
 export default createRouter({
     history: createWebHistory(),
     routes,
+    linkActiveClass: "active",
+    linkExactActiveClass: "exact-active",
 });

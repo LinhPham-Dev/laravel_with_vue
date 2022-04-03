@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\AuthorController;
+use App\Http\Controllers\Api\BookController;
+use App\Http\Controllers\Api\BookVersionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::apiResource('books', BookController::class)->except([
+    'create', 'edit'
+]);
+
+Route::get('books/{bookId}/book-version', BookVersionController::class)->name('books.version');
+
+Route::apiResource('authors', AuthorController::class)->only(['index', 'show']);
