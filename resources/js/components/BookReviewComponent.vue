@@ -1,23 +1,23 @@
 <template>
     <div class="col-lg-6 mb-3 text-start">
         <h4>{{ review.id }}</h4>
-        <p>{{ fromNow(review.created_at) }}</p>
+        <Review :value="review.stars" />
     </div>
     <div class="col-lg-6 mb-3 text-end">
         <p>{{ review.content }}</p>
-        <StarRating :stars="review.stars" />
+        <p>{{ fromNow(review.created_at) }}</p>
     </div>
 </template>
 
 <script>
 import moment from "moment";
-import StarRating from "../shared/components/StarRating.vue";
+import Review from "./ReviewComponent.vue";
 
 export default {
     props: ["review"],
 
     components: {
-        StarRating,
+        Review,
     },
 
     data() {
@@ -48,5 +48,3 @@ export default {
     },
 };
 </script>
-
-<style></style>
