@@ -11,6 +11,9 @@ class BookVersion extends Model
 {
     use HasFactory;
 
+    // Update field updated_at books table when bookVersion update
+    // protected $touches = ['books'];
+
     protected $fillable = ['name', 'book_id', 'reprint_date'];
 
     public function book(): BelongsTo
@@ -20,6 +23,6 @@ class BookVersion extends Model
 
     public function scopeReprintDate(Builder $query, $from)
     {
-        return $query->where('reprint_date', '>=', '$from');
+        return $query->where('reprint_date', '>=', "$from");
     }
 }

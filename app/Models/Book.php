@@ -38,4 +38,9 @@ class Book extends Model
     {
         return $this->bookVersions()->reprintDate($from)->get();
     }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
 }

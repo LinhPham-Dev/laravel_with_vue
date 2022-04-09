@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthorController;
 use App\Http\Controllers\Api\BookController;
+use App\Http\Controllers\Api\BookReviewController;
 use App\Http\Controllers\Api\BookVersionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,7 @@ Route::apiResource('books', BookController::class)->except([
     'create', 'edit'
 ]);
 
-Route::get('books/{bookId}/book-version', BookVersionController::class)->name('books.version');
+Route::get('books/{bookId}/book-versions', BookVersionController::class)->name('books.versions');
+Route::get('books/{bookId}/book-reviews', BookReviewController::class)->name('books.reviews');
 
 Route::apiResource('authors', AuthorController::class)->only(['index', 'show']);

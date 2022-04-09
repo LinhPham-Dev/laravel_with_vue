@@ -19,14 +19,12 @@ class BookVersionSeeder extends Seeder
         Book::all()->each(function (Book $book) {
             $bookVersions = collect();
 
-            for ($i = 0; $i < random_int(1, 10); $i++) {
+            for ($i = 0; $i < random_int(4, 6); $i++) {
                 $name = $book->title . " " . ($i + 1);
-                // $book_id = $book->id;
                 $reprint_date = Carbon::now();
 
                 $bookVersion = BookVersion::make([
                     'name' => $name,
-                    // 'book_id' => $book_id,
                     'reprint_date' => $reprint_date
                 ]);
 
@@ -36,9 +34,6 @@ class BookVersionSeeder extends Seeder
             $book->bookVersions()->saveMany($bookVersions);
 
             // Note: book_id auto generate each for bookVersion
-
-            // BookVersion::factory(5)
-            //     ->create();
         });
     }
 }
